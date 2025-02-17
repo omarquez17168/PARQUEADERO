@@ -1,0 +1,57 @@
+@startuml
+class Vehiculo {
+    - placa: String
+    - marca: String
+    - modelo: String
+    - horaEntrada: LocalDateTime
+    + getPlaca(): String
+    + getMarca(): String
+    + getModelo(): String
+    + getHoraEntrada(): LocalDateTime
+    + setPlaca(String)
+    + setMarca(String)
+    + setModelo(String)
+    + setHoraEntrada(LocalDateTime)
+}
+
+class Automovil {
+    - tipoCombustible: String
+    + getTipoCombustible(): String
+    + setTipoCombustible(String)
+}
+
+class Motocicleta {
+    - cilindraje: int
+    + getCilindraje(): int
+    + setCilindraje(int)
+}
+
+class Camion {
+    - capacidadCarga: double
+    + getCapacidadCarga(): double
+    + setCapacidadCarga(double)
+}
+
+class Parqueadero {
+    - vehiculos: List<Vehiculo>
+    + registrarEntrada(Vehiculo)
+    + registrarSalida(String): double
+    + consultarEstado(): List<Vehiculo>
+}
+
+class Registro {
+    - placa: String
+    - marca: String
+    - modelo: String
+    - horaEntrada: LocalDateTime
+    - horaSalida: LocalDateTime
+    - tarifa: double
+}
+
+Vehiculo <|-- Automovil
+Vehiculo <|-- Motocicleta
+Vehiculo <|-- Camion
+Parqueadero *-- Vehiculo
+Parqueadero *-- Registro
+
+@enduml
